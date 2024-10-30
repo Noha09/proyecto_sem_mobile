@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'home.dart';
+import 'settings.dart';
+import 'form.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +12,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/settings': (context) => const SecondPage(),
+        '/form': (context) => const ThirdPage(),
+      },
     );
   }
 }
