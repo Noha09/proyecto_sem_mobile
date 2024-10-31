@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/settings': (context) => const SecondPage(),
+        '/settings': (context) => const SettingsPage(), // Corrección aquí
         '/form': (context) => const ThirdPage(),
       },
     );

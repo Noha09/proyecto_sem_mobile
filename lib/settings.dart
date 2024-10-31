@@ -1,31 +1,38 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const SizedBox(height: 40),  // Espacio en la parte superior
-          SvgPicture.asset(
-            'assets/usuario.svg',
-            height: 250,  // Ajusta el tamaño de la imagen según tus necesidades
+    return CupertinoPageScaffold( // Sin const aquí
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Settings'),
+        previousPageTitle: 'Home',
+      ),
+      child: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Quitar `const` ya que SvgPicture.asset no es un constructor constante
+              SvgPicture.asset(
+                'assets/usuario.svg',
+                height: 250,
+              ),
+              const SizedBox(height: 20),
+              CupertinoButton(
+                color: CupertinoColors.activeBlue,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Back to Home Page'),
+              ),
+            ],
           ),
-          const SizedBox(height: 20),  // Espacio entre la imagen y el botón
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Back to Home Page'),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
